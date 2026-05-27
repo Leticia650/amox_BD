@@ -1,0 +1,100 @@
+:root {
+            --primary: #7d0505;
+            --primary-light: #fdf2f2;
+            --border-color: #f1cbd2;
+            --text-dark: #1e293b;
+            --accent: #991b1b;
+        }
+
+        /* Adicione isso ao seu arquivo CSS para garantir a responsividade */
+@media (max-width: 600px) {
+    .meta-info-grid { grid-template-columns: 1fr; }
+    .table-container { overflow-x: auto; }
+    /* Ajuste para botões ficarem melhores no celular */
+    .btn-finalize { padding: 15px; font-size: 16px; }
+}
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fffafb;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .menu-container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(125, 5, 5, 0.1);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .button-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-reconciliacao {
+            background-color: var(--primary);
+        }
+
+        .btn-reconciliacao:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-transferencias {
+            background-color: var(--primary) /* Um tom neutro escuro para diferenciar visualmente */
+        }
+
+        .btn-transferencias:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .icon {
+            font-size: 22px;
+        }

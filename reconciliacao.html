@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="css/recon.css">
+    <link rel="shortcut icon" href="imagens/icon.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle e Reconciliação de Materiais</title>
+    
+</head>
+<body>
+
+<div class="container">
+    <!-- Envoltório adicionado para permitir o alinhamento das abas à esquerda e do botão à direita -->
+    <div class="tabs-container">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('reconciliacao', event)">Nova Reconciliação</button>
+            <button class="tab-btn" onclick="switchTab('historico', event); loadHistory();">Histórico de Lotes Finalizados</button>
+        </div>
+        
+        <!-- O botão agora fica aqui, posicionado perfeitamente à direita das abas -->
+        <a href="index.html" class="btn-index">
+            ⬅ Voltar ao Menu Principal
+        </a>
+    </div>
+
+    <!-- ABA 1: RECONCILIAÇÃO -->
+    <div id="tab-reconciliacao" class="tab-content active">
+        <h1>Balanço e Reconciliação de Materiais</h1>
+         
+        <div class="meta-info-grid">
+            <div class="meta-field">
+                <label for="lote_atual">Número do Lote Atual *</label>
+                <input type="text" id="lote_atual" placeholder="Ex: 2023123">
+            </div>
+            <div class="meta-field">
+                <label for="ordem_atual">Número da Ordem Atual *</label>
+                <input type="text" id="ordem_atual" placeholder="Ex: 7036123">
+            </div>
+        </div>
+
+        <div class="controls">
+            <span class="controls-title">Configuração de Componentes:</span>
+            <label class="switch-group">
+                <input type="checkbox" id="toggle-seringa" checked onchange="toggleColumn('seringa')">
+                <span>Seringa</span>
+            </label>
+            <label class="switch-group">
+                <input type="checkbox" id="toggle-copo" checked onchange="toggleColumn('copo')">
+                <span>Copo Dosador</span>
+            </label>
+        </div>
+
+        <div class="action-bar">
+            <button class="btn-clear-table" onclick="clearCurrentTable()">Limpar Tabela Atual</button>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr id="header-row">
+                        <th>Atributos / Materiais</th>
+                        <th data-mat="frascos">Frascos<span class="info-tag">(Máx: 5%)</span></th>
+                        <th data-mat="tampas">Tampas<span class="info-tag">(Máx: 5%)</span></th>
+                        <th data-mat="seringa">Seringa<span class="info-tag">(Máx: 2%)</span></th>
+                        <th data-mat="copo">Copo<span class="info-tag">(Máx: 2%)</span></th>
+                        <th data-mat="rotulo">Rótulo<span class="info-tag">(Máx: 5%)</span></th>
+                        <th data-mat="cartucho">Cartucho<span class="info-tag">(Máx: 2%)</span></th>
+                        <th data-mat="bula">Bula<span class="info-tag">(Máx: 2%)</span></th>
+                        <th data-mat="caixa">Caixa<span class="info-tag">(Máx: 2%)</span></th>
+                        <th data-mat="fita">Fita<span class="info-tag">(Máx: 5%)</span></th>
+                        <th data-mat="cola">Cola<span class="info-tag">(Máx: 0%)</span></th>
+                        <th data-mat="pallet">Pallet<span class="info-tag">(Máx: 0%)</span></th>
+                        <th data-mat="etiqueta_90x130">Etiqueta 90x130mm<span class="info-tag">(Máx: 2%)</span></th>
+                        <th data-mat="etiqueta_70x10">Etiqueta 70x10mm<span class="info-tag">(Máx: 2%)</span></th>
+                        <th data-mat="filme">Filme<span class="info-tag">(Máx: 0%)</span></th>
+                        <th data-mat="cantoneira_100">Cantoneira 1,00mt<span class="info-tag">(Máx: 0%)</span></th>
+                        <th data-mat="cantoneira_120">Cantoneira 1,20mt<span class="info-tag">(Máx: 0%)</span></th>
+                    </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+            </table>
+        </div>
+
+        <button class="btn-finalize" onclick="finalizeBatch()">Finalizar Lote</button>
+    </div>
+
+    <!-- ABA 2: CONSULTA DE HISTÓRICO -->
+    <div id="tab-historico" class="tab-content">
+        <div class="history-top-bar">
+            <h1>Consulta de Lotes Finalizados</h1>
+            <button class="btn-clear-all" onclick="clearAllHistory()">Apagar Todo o Histórico</button>
+        </div>
+        <div id="history-container"></div>
+    </div>
+</div>
+
+<script src="javaScript/recon_script.js">
+  
+</script>
+
+<footer>
+    Site criado por <a href="https://www.linkedin.com/in/let%C3%ADcia-marcolino-00015a126/">Letícia Marcolino</a>
+</footer>
+
+
+
+</body>
+</html>
